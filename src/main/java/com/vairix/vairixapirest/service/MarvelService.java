@@ -4,11 +4,13 @@ import com.vairix.marveladapter.client.MarvelClient;
 import com.vairix.marveladapter.model.Character;
 import com.vairix.vairixapirest.exception.CharacterNotExistException;
 import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+/**
+ * Servicio para la obtencion de informacion de los personajes desde el SDK de MarvelAdapter.
+ */
 @Service
 @RequiredArgsConstructor
 public class MarvelService {
@@ -33,7 +35,6 @@ public class MarvelService {
         } else {
             throw new CharacterNotExistException();
         }
-
 
     }
 }

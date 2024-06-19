@@ -8,10 +8,17 @@ import org.springframework.stereotype.Service;
 import java.sql.Timestamp;
 import java.time.Instant;
 
+/**
+ * Servicio que permite guardar info relacionada con los request hechos a los servicios que buscan en los personajes
+ * de Marvel.
+ */
 @Service
 @RequiredArgsConstructor
 public class CharacterRequestInfoService {
 
+    /**
+     * Permite identificar los request.
+     */
     public enum RequestType{
         GET_CHARACTERS,
         GET_CHARACTER,

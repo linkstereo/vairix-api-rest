@@ -31,8 +31,8 @@ public class SecurityConfig extends WebSecurityConfiguration {
                     .requestMatchers("/v3/api-docs/**","/swagger-ui/**", "/swagger-ui.html").permitAll()
                     .requestMatchers("/h2-console/**").permitAll()
                     .requestMatchers("/"+BASE_API_VERSION+"/"+JWT_URI_BASE+"/**").permitAll()
-                    .requestMatchers("/"+BASE_API_VERSION+"/"+USERS_URI_BASE+"/**").hasAuthority("USER")
-                    .requestMatchers("/"+BASE_API_VERSION+"/"+CHARACTERS_URI_BASE+"/**").hasAuthority("USER")
+                    .requestMatchers("/"+BASE_API_VERSION+"/"+USERS_URI_BASE+"/**").authenticated()
+                    .requestMatchers("/"+BASE_API_VERSION+"/"+CHARACTERS_URI_BASE+"/**").authenticated()
             )
             .sessionManagement(sess -> sess.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
 

@@ -73,7 +73,7 @@ public class UserService {
             var encodedPassword = passwordEncoder.encode(savedUser.get().getPassword());
             user.setPassword(encodedPassword);
             user.setId(savedUser.get().getId());
-            user.setIsActive(savedUser.get().getIsActive());
+            user.setActive(user.isActive());
         }
 
         return userRepository.save(user);

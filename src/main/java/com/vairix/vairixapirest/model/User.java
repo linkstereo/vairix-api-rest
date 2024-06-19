@@ -27,7 +27,7 @@ public class User implements Serializable, UserDetails {
     private String name;
     private String email;
     private String password;
-    private Boolean isActive;
+    private boolean isActive = true;
 
     @JsonIgnore
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
