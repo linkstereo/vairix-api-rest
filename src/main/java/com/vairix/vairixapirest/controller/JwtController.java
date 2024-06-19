@@ -8,6 +8,7 @@ import com.vairix.vairixapirest.model.LoginDto;
 import com.vairix.vairixapirest.model.User;
 import com.vairix.vairixapirest.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -35,12 +36,16 @@ public class JwtController {
      * @throws BadRequestException
      * @throws InvalidEmailException
      */
-    @PostMapping(JWT_URI_BASE+"/register")
+    @PostMapping(value = JWT_URI_BASE+"/register",
+            consumes = MediaType.APPLICATION_JSON_VALUE,
+            produces = MediaType.APPLICATION_JSON_VALUE)
     public BearerToken register(@RequestBody User user) throws EmailExistException, BadRequestException, InvalidEmailException {
         return userService.register(user);
     }
 
-    @PostMapping(JWT_URI_BASE+"/authenticate")
+    @PostMapping(value = JWT_URI_BASE+"/authenticate",
+            consumes = MediaType.APPLICATION_JSON_VALUE,
+            produces = MediaType.APPLICATION_JSON_VALUE)
     public BearerToken authenticate(@RequestBody LoginDto login) {
         return userService.authenticate(login);
     }

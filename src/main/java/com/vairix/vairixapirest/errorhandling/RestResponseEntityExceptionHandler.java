@@ -16,12 +16,19 @@ import javax.naming.AuthenticationException;
 public class RestResponseEntityExceptionHandler
         extends ResponseEntityExceptionHandler {
 
+    final private static HttpHeaders httpHeaders;
+
+    static {
+        httpHeaders = new HttpHeaders();
+        httpHeaders.add("Content-Type","application/json");
+    }
+
     @ExceptionHandler({ CharacterNotExistException.class })
     public ResponseEntity<ErrorBody> handleCharacterNotExistException(
             Exception ex, WebRequest request) {
         return new ResponseEntity<>(
                 ErrorBody.builder().mensaje("El personaje no existe").build(),
-                new HttpHeaders(),
+                httpHeaders,
                 HttpStatus.NOT_FOUND);
     }
 
@@ -30,7 +37,7 @@ public class RestResponseEntityExceptionHandler
             Exception ex, WebRequest request) {
         return new ResponseEntity<>(
                 ErrorBody.builder().mensaje("El usuario no existe").build(),
-                new HttpHeaders(),
+                httpHeaders,
                 HttpStatus.NOT_FOUND);
     }
 
@@ -39,7 +46,7 @@ public class RestResponseEntityExceptionHandler
             Exception ex, WebRequest request) {
         return new ResponseEntity<>(
                 ErrorBody.builder().mensaje("El correo ya esta registrado").build(),
-                new HttpHeaders(),
+                httpHeaders,
                 HttpStatus.BAD_REQUEST);
     }
 
@@ -48,7 +55,7 @@ public class RestResponseEntityExceptionHandler
             Exception ex, WebRequest request) {
         return new ResponseEntity<>(
                 ErrorBody.builder().mensaje("El correo es invalido. Debe ser de la forma <name>@<domain>").build(),
-                new HttpHeaders(),
+                httpHeaders,
                 HttpStatus.BAD_REQUEST);
     }
 
@@ -57,7 +64,7 @@ public class RestResponseEntityExceptionHandler
             Exception ex, WebRequest request) {
         return new ResponseEntity<>(
                 ErrorBody.builder().mensaje(ex.getCause().getMessage()).build(),
-                new HttpHeaders(),
+                httpHeaders,
                 HttpStatus.BAD_REQUEST);
     }
 
@@ -66,7 +73,7 @@ public class RestResponseEntityExceptionHandler
             Exception ex, WebRequest request) {
         return new ResponseEntity<>(
                 ErrorBody.builder().mensaje(ex.getMessage()).build(),
-                new HttpHeaders(),
+                httpHeaders,
                 HttpStatus.UNAUTHORIZED);
     }
 
