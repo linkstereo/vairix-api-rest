@@ -33,6 +33,7 @@ public class SecurityConfig extends WebSecurityConfiguration {
                     .requestMatchers("/"+BASE_API_VERSION+"/"+JWT_URI_BASE+"/**").permitAll()
                     .requestMatchers("/"+BASE_API_VERSION+"/"+USERS_URI_BASE+"/**").authenticated()
                     .requestMatchers("/"+BASE_API_VERSION+"/"+CHARACTERS_URI_BASE+"/**").authenticated()
+                    .requestMatchers("/"+BASE_API_VERSION+"/"+REQUEST_URI_BASE+"/**").authenticated()
             )
             .sessionManagement(sess -> sess.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
 

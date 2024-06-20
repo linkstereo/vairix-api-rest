@@ -9,10 +9,7 @@ import com.vairix.vairixapirest.model.User;
 import com.vairix.vairixapirest.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import static com.vairix.vairixapirest.controller.ControllerConstants.BASE_API_VERSION;
 import static com.vairix.vairixapirest.controller.ControllerConstants.JWT_URI_BASE;
@@ -36,6 +33,7 @@ public class JwtController {
      * @throws BadRequestException
      * @throws InvalidEmailException
      */
+    @CrossOrigin(origins = "*")
     @PostMapping(value = JWT_URI_BASE+"/register",
             consumes = MediaType.APPLICATION_JSON_VALUE,
             produces = MediaType.APPLICATION_JSON_VALUE)
@@ -43,6 +41,7 @@ public class JwtController {
         return userService.register(user);
     }
 
+    @CrossOrigin(origins = "*")
     @PostMapping(value = JWT_URI_BASE+"/authenticate",
             consumes = MediaType.APPLICATION_JSON_VALUE,
             produces = MediaType.APPLICATION_JSON_VALUE)

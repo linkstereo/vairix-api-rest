@@ -18,5 +18,9 @@ public class ControllerConstants {
      * Path base de los servicios relacionados con los personajes
      */
     public static final String CHARACTERS_URI_BASE="characters";
+    /**
+     * Path base de los servicios relacionados con los requests
+     */
+    public static final String REQUEST_URI_BASE="requests";
 
 }

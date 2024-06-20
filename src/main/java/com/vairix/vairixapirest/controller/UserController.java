@@ -21,6 +21,7 @@ public class UserController {
 
     private final UserService userService;
 
+    @CrossOrigin(origins = "*")
     @GetMapping(value = USERS_URI_BASE,
             consumes = MediaType.APPLICATION_JSON_VALUE,
             produces = MediaType.APPLICATION_JSON_VALUE)
@@ -28,6 +29,7 @@ public class UserController {
         return userService.getAll();
     }
 
+    @CrossOrigin(origins = "*")
     @PutMapping(value = USERS_URI_BASE,
             consumes = MediaType.APPLICATION_JSON_VALUE,
             produces = MediaType.APPLICATION_JSON_VALUE)

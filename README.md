@@ -46,3 +46,11 @@ localhost:8080/swagger-ui/index.html
 ## AUTENTICACION DE LA APP COMO USUARIO
 Aunque no lo vemos, de manera automatica el front hace un registro de un usuario dentro
 del sistema y procede a usar la token para poder consumir el resto de los servicios.
+
+## LEVANTAR FRONT
+- Clonar vairix-angular
+- Posicionarse adentro de /vairix-adapter
+- Ejecutar el siguiente comando:
+- ```console
+ng serve
+```

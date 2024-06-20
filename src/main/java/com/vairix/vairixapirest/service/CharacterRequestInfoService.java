@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import java.sql.Timestamp;
 import java.time.Instant;
+import java.util.List;
 
 /**
  * Servicio que permite guardar info relacionada con los request hechos a los servicios que buscan en los personajes
@@ -26,6 +27,10 @@ public class CharacterRequestInfoService {
     }
 
     private final CharacterRequestInfoRepository repository;
+
+    public List<CharacterRequestInfo> getAll() {
+        return repository.findAll();
+    }
 
     public void logCharacterRequestInfo(RequestType type){
         CharacterRequestInfo characterRequestInfo = new CharacterRequestInfo();

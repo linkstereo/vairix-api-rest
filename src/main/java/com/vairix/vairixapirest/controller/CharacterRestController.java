@@ -5,10 +5,7 @@ import com.vairix.vairixapirest.exception.CharacterNotExistException;
 import com.vairix.vairixapirest.service.CharacterRequestInfoService;
 import com.vairix.vairixapirest.service.MarvelService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 
 import java.util.List;
@@ -33,6 +30,7 @@ public class CharacterRestController {
      * Persiste informacion de hora y request hecho.
      * @return List of {@link Character}
      */
+    @CrossOrigin(origins = "*")
     @GetMapping(CHARACTERS_URI_BASE)
     public List<Character> getCharacters(){
         characterRequestInfoService.logCharacterRequestInfo(GET_CHARACTERS);
@@ -46,6 +44,7 @@ public class CharacterRestController {
      * @return {@link Character} - Personaje encontrado
      * @throws CharacterNotExistException
      */
+    @CrossOrigin(origins = "*")
     @GetMapping(CHARACTERS_URI_BASE + "/{characterId}")
     public Character getCharacter(@PathVariable("characterId") String characterId) throws CharacterNotExistException {
         characterRequestInfoService.logCharacterRequestInfo(GET_CHARACTER);
